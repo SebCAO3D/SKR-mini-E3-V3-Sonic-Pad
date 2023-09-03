@@ -1,0 +1,47 @@
+Installation de Klipper 
+Sonic Pad sur SKR E3 mini V3 GB01
+
+1 - Télécharger Virtual Box : https://www.virtualbox.org/wiki/Downloads
+2 - Télécharger Ubuntu : https://releases.ubuntu.com/22.04.3/ubuntu-22.04.3-desktop-amd64.iso
+3 - Suivre l'installation de Ubuntu : https://www.malekal.com/comment-installer-linux-mint-20-sur-virtualbox/ (exemple d'identifiant et de mot de passe : biqu ) (permet de ne pas oublier pour une prochaine cession ou utilisation de VB)
+4 - Entrer les commandes :
+sudo apt update && sudo apt upgrade (entrer le mot de passe saisie lors de l'installation de l'image Ubuntu).
+sudo apt-get install git
+git clone https://github.com/CrealityOfficial/Creality_Sonic_Pad.git
+git clone https://github.com/CrealityTech/fluidd_ys.git
+git clone https://github.com/CrealityTech/klipper.git
+git clone https://github.com/CrealityTech/mainsail_ys.git
+git clone https://github.com/CrealityTech/moonraker_ys.git
+git clone https://github.com/Klipper3d/klipper.git
+Aller dans le dossier gris puis la loupe de recherche et tapez Creality_Sonic_Pad. Les dossiers présents sont vides, il va donc falloir les récupérer grâce aux téléchargements fais précédemment avec les git en copier/coller ou déplacer puis remplacer chaque dossier.
+5 - Aller dans les dossiers : Creality/klipper, clic droit sur le dossier script et ouvrir avec le Terminal
+6 - Entrer la commande : ./install-ubuntu-18.04.sh     valider avec votre mot de passe (ex : biqu )
+7 - Entrer la commande : cd ..
+8 - Entrer la commande : make menuconfig
+9 - Entrer sur la 1ère ligne : Enable extra ... descendez jusqu'à la ligne STMicroelectronics STM32  puis Entrer
+10 - Processor model ligne STM32 G0B1 ou la puce correspondant à votre CM ( c'est écris dessus )
+11 - Bootloader 8KIB
+12 - Clock Reference 8 Mhz
+13 - Communication interface (USB PA11/PA12)
+14 - Tapez sur la lettre " Q " de votre clavier pour sortir puis sauvegardez
+15 - Entrer la commande : make
+16 - Dossier Creality/klipper/out puis renommer le fichier klipper.bin en firmware.bin
+17 - Ouvrir Firefox dans la Virtual Box et se connecter à la boite mail afin de se renvoyer à soit même par mail le fichier " firmware.bin "
+18 - Ouvrir sa boite mail dans windows et récupérer le firmware.bin
+19 - Placer le firmware sur une carte micro SD FAT32 4096 puis l'insérer dans l'imprimante.
+20 – Télécharger :
+Sans Bltouch : https://github.com/Klipper3d/klipper/blob/master/config/generic-bigtreetech-skr-mini-e3-v3.0.cfg 
+Avec Bltouch : https://github.com/bigtreetech/BIGTREETECH-SKR-mini-E3/blob/master/firmware/V3.0/Klipper/SKR-mini-E3-V3.0-klipper.cfg
+Renommer le fichier en " printer.cfg "
+21 - Placer le fichier ci-dessus sur une clef USB port en bas à gauche du Sonic Pad
+22 - Sélectionner Autre imprimante, le printer.cfg doit être détecter, sinon changer de clef usb ou d'adaptateur micro sd.
+23 - Suivez les étapes de l'écran du Sonic Pad. Attention à prendre le câble bleu USB fourni par BIQU pour la communication entre la CM et de Sonic Pad lors de la première installation ou communication.
+
+Infos/Conseils :
+- N'oubliez pas que tous les fichiers Klipper dont le printer.cfg doivent être personnalisés en fonction de votre imprimante. https://www.youtube.com/watch?v=e3VXxgQgzOM
+- Vous pouvez également accéder à Mainsail sur le Sonic Pad en ajoutant à son adresse ip " :8819 " ex : 192.168.1.1:8819
+- Pour la connexion à distance, suivre le tuto de Jocelyn : https://www.youtube.com/watch?v=8KywJ60J74o&t=307s ou partager votre bureau à distance https://support.google.com/chrome/answer/1649523/?hl=Fr
+- D'autres infos en PJ sur mon PDF
+
+Sources :
+https://www.youtube.com/watch?v=7qh3GS4icH4
